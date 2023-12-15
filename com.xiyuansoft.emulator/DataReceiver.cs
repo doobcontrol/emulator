@@ -29,7 +29,9 @@ namespace com.xiyuansoft.emulator
                     {
                         await Task.Run(new Action(
                             () =>
-                            { while (UdpClient.Available == 0) ; }
+                            { while (UdpClient.Available == 0)
+                                    Task.Delay(1000); 
+                            }
                             ));
 
                         byte[] receivedBytes = UdpClient.Receive(ref targetEndPoint);
